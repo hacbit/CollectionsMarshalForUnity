@@ -16,9 +16,7 @@
 
 ## Announce
 
-本项目是参考 CollectionsMarshal 在 .net9 中的实现，修改而成的，虽然经过了一定的基准测试，但是毕竟涉及了一些 unsafe 的操作，**不保证其安全性，也不保证不会有 bug （欢迎提 issue）**
-
-目前只测试了 Unity Editor 2022.3
+本项目是参考 CollectionsMarshal 在 .net9 中的实现，修改而成，目前只测试了 Unity Editor 2022.3，欢迎提 issue
 
 
 
@@ -56,6 +54,10 @@ public sealed partial class CollectionsMarshalTest : MonoBehaviour
         Debug.Assert(ls[0].A == 100);
         span[3].A = 400;
         Debug.Assert(ls[3].A == 400);
+        
+        CollectionsMarshal.SetCount(ls, 6);
+        Debug.Assert(ls.Count == 6);
+        Debug.Assert(ls[5].A == 0);
 
         var d = new Dictionary<int, Test> {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}};
         ref var val = ref CollectionsMarshal.GetValueRefOrNullRef(d, 1);
