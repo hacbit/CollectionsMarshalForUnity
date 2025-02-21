@@ -1,6 +1,7 @@
 #if NET5_0_OR_GREATER
 // The CollectionsMarshal type is internal in .NET 5.0 and later, so it's not necessary to define it.
-#else
+#elif NETSTANDARD2_1_OR_GREATER
+// The Span<T> and ReadOnlySpan<T> types are internal in .NET Standard 2.1 and later.
 #pragma warning disable CS8632, CS8500
 
 using System.Collections.Generic;

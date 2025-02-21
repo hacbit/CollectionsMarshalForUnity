@@ -1,36 +1,27 @@
 # CollectionsMarshal Support For Unity
-
-
-
-[English](README-EN.md)
-
-
-
-`CollectionsMarshal` class 是 .Net5 开始引入的类，其功能简单来说可以获取 `List<T>` 和 `Dictionary<TKey, TValue>` 内部的值的引用，对于 `T` 和 `TValue` 是值类型（比如 struct） 的时候就非常好用，这会让你避免额外的复制。
+The `CollectionsMarshal` class is introduced in .Net5. Its functionality allows you to get references to the internal values of `List<T>` and `Dictionary<TKey, TValue>`. This is particularly useful when T and TValue are value types (e.g., struct), as it helps avoid unnecessary copying.
 
 ## Import
 
-直接把 CollectionsMarshal.cs 放进项目中即可
+Simply add CollectionsMarshal.cs to your project.
 
 
 
 ## Dependence
 
-依赖 `System.Runtime.CompilerServices.Unsafe` class，对于这个类，可以从 nuget 上下载对应的 nuget 包： https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe
+Depends on the `System.Runtime.CompilerServices.Unsafe` class, which can be downloaded from NuGet: https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe
 
 
 
 ## Announce
-
-本项目是参考 CollectionsMarshal 在 .net9 中的实现，修改而成，目前只测试了 Unity Editor 2022.3，欢迎提 issue
+This project is modified based on the implementation of CollectionsMarshal in .net9. It has only been tested in Unity Editor 2022.3. Issues are welcome.
 
 
 
 ## Usage
+Here is a simple example:
 
-以下是一个简单的示例
-
->   C#13.0 以下版本**无法在异步方法或迭代器方法中使用** ref 和 unsafe，因此也无法在这些方法中使用 CollectionsMarshal
+>   Versions below C#13.0 **cannot use** ref and unsafe in asynchronous methods or iterator methods, so CollectionsMarshal cannot be used in these methods either.
 
 ```cs
 using System;
@@ -83,6 +74,4 @@ public sealed partial class CollectionsMarshalTest : MonoBehaviour
     }
 }
 ```
-
-
 
